@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="DropoutPrediction.API/DropoutPrediction.API.csproj" />
+  <Project Path="DropoutPrediction.Application/DropoutPrediction.Application.csproj" />
+  <Project Path="DropoutPrediction.Domain/DropoutPrediction.Domain.csproj" />
+  <Project Path="DropoutPrediction.Infrastructure/DropoutPrediction.Infrastructure.csproj" />
+</Solution>

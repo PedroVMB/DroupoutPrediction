@@ -1,0 +1,6 @@
+@DropoutPrediction.API_HostAddress = http://localhost:5195
+
+GET {{DropoutPrediction.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
