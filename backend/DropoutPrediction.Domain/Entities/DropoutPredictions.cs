@@ -7,14 +7,20 @@ namespace DropoutPrediction.Domain.Entities;
 public class DropoutPredictions : BaseEntity
 {
     private RiskLevel riskLevel;
-    private string v;
+    private string? modelVersion;
 
-    public DropoutPredictions(Guid studentId, decimal probability, RiskLevel riskLevel, string v)
+    public DropoutPredictions(
+        Guid studentId,
+        decimal probability,
+        RiskLevel riskLevel,
+        string? modelVersion)
     {
+        Id = Guid.NewGuid();
         StudentId = studentId;
         Probability = probability;
-        this.riskLevel = riskLevel;
-        this.v = v;
+        RiskLevel = riskLevel;
+        ModelVersion = modelVersion;
+        CreatedAt = DateTime.UtcNow;
     }
 
     public Guid StudentId { get; private set; }
