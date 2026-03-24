@@ -1,16 +1,6 @@
 
 using DropoutPrediction.Domain.Enums;
 
-public DropoutPredictions(Guid studentId, decimal probability, RiskLevel riskLevel, string? modelVersion)
-    {
-        StudentId = studentId;
-        Probability = probability;
-        RiskLevel = riskLevel;
-        ModelVersion = modelVersion;
-        CreatedAt = DateTime.UtcNow;
-    }
-using System;
-using DropoutPrediction.Domain.Enums;
 
 namespace DropoutPrediction.Domain.Entities;
 
@@ -36,5 +26,7 @@ public class DropoutPredictions : BaseEntity
     public DateTime CreatedAt { get; private set; }
 
     public Student? Student { get; private set; }
+
+   
 
 }

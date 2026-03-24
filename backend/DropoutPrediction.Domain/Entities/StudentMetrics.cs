@@ -1,13 +1,5 @@
 
-    public StudentMetrics(Guid studentId, decimal attendanceRate, decimal gradesAverage, int assignmentsCompleted, int lastAccessDaysAgo)
-    {
-        StudentId = studentId;
-        AttendanceRate = attendanceRate;
-        GradesAverage = gradesAverage;
-        AssignmentsCompleted = assignmentsCompleted;
-        LastAccessDaysAgo = lastAccessDaysAgo;
-        CreatedAt = DateTime.UtcNow;
-    }
+    
 using System;
 
 namespace DropoutPrediction.Domain.Entities;

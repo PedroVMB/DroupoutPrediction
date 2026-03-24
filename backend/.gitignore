@@ -1,0 +1,57 @@
+# .gitignore para projeto .NET (backend)
+
+# Build results
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf
+
+# Others
+*.db
+*.sqlite
+
+# Rider
+.idea/
+
+# MacOS
+.DS_Store
+
+# Docker
+**/Dockerfile
+**/docker-compose*
+
+# Test results
+TestResults/
+
+# NUGET
+*.nupkg
+.nuget/
+
+# Entity Framework
+Migrations/
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Python (caso use scripts)
+__pycache__/
+*.pyc
