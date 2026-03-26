@@ -14,6 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// 🔹 CORS — allow the Vite dev server
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+        policy.WithOrigins("http://localhost:5173", "http://localhost:5174")
+              .AllowAnyHeader()
+              .AllowAnyMethod());
+});
 
 // 🔹 Repositórios e UnitOfWork
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -32,6 +40,9 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+// 🔹 Seed database on startup
+await DataSeeder.SeedAsync(app.Services);
+
 // 🔹 Pipeline
 if (app.Environment.IsDevelopment())
 {
@@ -39,7 +50,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// NOTE: UseHttpsRedirection removed — API runs on plain HTTP in development
+app.UseCors("Frontend");
 
 // 🔹 Map Controllers
 app.MapControllers();

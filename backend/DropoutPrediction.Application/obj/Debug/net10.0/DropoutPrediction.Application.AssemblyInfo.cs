@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DropoutPrediction.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bbf703fb3de181ab153530def3baeaa4bc5ab105")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fa45bc402d14d3829f7777fab859fe28eec4ed88")]
 [assembly: System.Reflection.AssemblyProductAttribute("DropoutPrediction.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DropoutPrediction.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

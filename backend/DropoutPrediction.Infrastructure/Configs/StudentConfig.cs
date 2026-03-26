@@ -21,6 +21,9 @@ public class StudentConfig : IEntityTypeConfiguration<Student>
         builder.Property(x => x.Course)
             .HasMaxLength(100);
 
+        builder.Property(x => x.Semester);
+        builder.Property(x => x.EnrollmentDate);
+
         builder.HasMany(x => x.Metrics)
             .WithOne(x => x.Student)
             .HasForeignKey(x => x.StudentId);

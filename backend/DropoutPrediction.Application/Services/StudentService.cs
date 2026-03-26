@@ -18,7 +18,9 @@ public class StudentService(
         var student = new Student(
             dto.Name,
             dto.Age,
-            dto.Course
+            dto.Course,
+            dto.Semester,
+            dto.EnrollmentDate == default ? DateTime.UtcNow : dto.EnrollmentDate
         );
 
         unitOfWork.StudentRepository.Add(student);
@@ -29,11 +31,25 @@ public class StudentService(
     public async Task<IEnumerable<StudentResponseDto>> GetAllAsync()
     {
         var students = await unitOfWork.StudentRepository.ListAllAsync();
-        return students.Select(s => new StudentResponseDto
+        return students.Select(s =>
         {
-            Id = s.Id,
-            Name = s.Name,
-            Course = s.Course
+            var latestMetrics    = s.Metrics.OrderByDescending(m => m.CreatedAt).FirstOrDefault();
+            var latestPrediction = s.Predictions.OrderByDescending(p => p.CreatedAt).FirstOrDefault();
+
+            return new StudentResponseDto
+            {
+                Id                   = s.Id,
+                Name                 = s.Name,
+                Course               = s.Course,
+                Semester             = s.Semester,
+                EnrollmentDate       = s.EnrollmentDate,
+                AttendanceRate       = latestMetrics?.AttendanceRate ?? 0,
+                GradeAverage         = latestMetrics?.GradesAverage  ?? 0,
+                AssignmentsCompleted = latestMetrics?.AssignmentsCompleted ?? 0,
+                LastAccessDaysAgo    = latestMetrics?.LastAccessDaysAgo    ?? 0,
+                RiskLevel            = latestPrediction?.RiskLevel.ToString().ToUpper() ?? "LOW",
+                Probability          = latestPrediction?.Probability ?? 0,
+            };
         });
     }
 

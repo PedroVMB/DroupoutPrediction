@@ -8,11 +8,13 @@ public class StudentMetrics : BaseEntity
 {
     public StudentMetrics(Guid studentId, decimal attendanceRate, decimal gradesAverage, int assignmentsCompleted, int lastAccessDaysAgo)
     {
+        Id = Guid.NewGuid();
         StudentId = studentId;
         AttendanceRate = attendanceRate;
         GradesAverage = gradesAverage;
         AssignmentsCompleted = assignmentsCompleted;
         LastAccessDaysAgo = lastAccessDaysAgo;
+        CreatedAt = DateTime.UtcNow;
     }
 
     public Guid StudentId { get; private set; }
